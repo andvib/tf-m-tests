@@ -12,68 +12,68 @@
 #include "psa_manifest/sid.h"
 
 /* List of tests */
-static void tfm_ipc_test_1001(struct test_result_t *ret);
-static void tfm_ipc_test_1002(struct test_result_t *ret);
-static void tfm_ipc_test_1003(struct test_result_t *ret);
-static void tfm_ipc_test_1004(struct test_result_t *ret);
-static void tfm_ipc_test_1005(struct test_result_t *ret);
-static void tfm_ipc_test_1006(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1001(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1002(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1003(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1004(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1005(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1006(struct test_result_t *ret);
 
 #ifdef TFM_IPC_ISOLATION_2_TEST_READ_ONLY_MEM
-static void tfm_ipc_test_1007(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1007(struct test_result_t *ret);
 #endif
 
 #ifdef TFM_IPC_ISOLATION_2_APP_ACCESS_PSA_MEM
-static void tfm_ipc_test_1008(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1008(struct test_result_t *ret);
 #endif
 
 #ifdef TFM_IPC_ISOLATION_2_MEM_CHECK
-static void tfm_ipc_test_1009(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1009(struct test_result_t *ret);
 #endif
 
-static void tfm_ipc_test_1010(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1010(struct test_result_t *ret);
 
 #ifdef TFM_IPC_ISOLATION_3_RETRIEVE_APP_MEM
-static void tfm_ipc_test_1011(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1011(struct test_result_t *ret);
 #endif
 
 #ifdef TFM_PARTITION_FFM11
-static void tfm_ipc_test_1012(struct test_result_t *ret);
+static void tfm_ns_ipc_test_1012(struct test_result_t *ret);
 #endif
 
 static struct test_t ipc_veneers_tests[] = {
-    {&tfm_ipc_test_1001, "TFM_IPC_TEST_1001",
+    {&tfm_ns_ipc_test_1001, "TFM_NS_IPC_TEST_1001",
      "Get PSA framework version", {TEST_PASSED}},
-    {&tfm_ipc_test_1002, "TFM_IPC_TEST_1002",
+    {&tfm_ns_ipc_test_1002, "TFM_NS_IPC_TEST_1002",
      "Get version of an RoT Service", {TEST_PASSED}},
-    {&tfm_ipc_test_1003, "TFM_IPC_TEST_1003",
+    {&tfm_ns_ipc_test_1003, "TFM_NS_IPC_TEST_1003",
      "Connect to an RoT Service", {TEST_PASSED}},
-    {&tfm_ipc_test_1004, "TFM_IPC_TEST_1004",
+    {&tfm_ns_ipc_test_1004, "TFM_NS_IPC_TEST_1004",
      "Call an RoT Service", {TEST_PASSED}},
-    {&tfm_ipc_test_1005, "TFM_IPC_TEST_1005",
+    {&tfm_ns_ipc_test_1005, "TFM_NS_IPC_TEST_1005",
      "Call IPC_INIT_BASIC_TEST service", {TEST_PASSED}},
-    {&tfm_ipc_test_1006, "TFM_IPC_TEST_1006",
+    {&tfm_ns_ipc_test_1006, "TFM_NS_IPC_TEST_1006",
      "Call PSA RoT access APP RoT memory test service", {TEST_PASSED}},
 #ifdef TFM_IPC_ISOLATION_2_TEST_READ_ONLY_MEM
-    {&tfm_ipc_test_1007, "TFM_IPC_TEST_1007",
+    {&tfm_ns_ipc_test_1007, "TFM_NS_IPC_TEST_1007",
      "Call PSA RoT access APP RoT readonly memory test service", {TEST_PASSED}},
 #endif
 #ifdef TFM_IPC_ISOLATION_2_APP_ACCESS_PSA_MEM
-    {&tfm_ipc_test_1008, "TFM_IPC_TEST_1008",
+    {&tfm_ns_ipc_test_1008, "TFM_NS_IPC_TEST_1008",
      "Call APP RoT access PSA RoT memory test service", {TEST_PASSED}},
 #endif
 #ifdef TFM_IPC_ISOLATION_2_MEM_CHECK
-    {&tfm_ipc_test_1009, "TFM_IPC_TEST_1009",
+    {&tfm_ns_ipc_test_1009, "TFM_NS_IPC_TEST_1009",
      "Call APP RoT memory check test service", {TEST_PASSED}},
 #endif
-    {&tfm_ipc_test_1010, "TFM_IPC_TEST_1010",
+    {&tfm_ns_ipc_test_1010, "TFM_NS_IPC_TEST_1010",
      "Test psa_call with the status of PSA_ERROR_PROGRAMMER_ERROR", {TEST_PASSED}},
 #ifdef TFM_IPC_ISOLATION_3_RETRIEVE_APP_MEM
-    {&tfm_ipc_test_1011, "TFM_IPC_TEST_1011",
+    {&tfm_ns_ipc_test_1011, "TFM_NS_IPC_TEST_1011",
      "Call APP RoT access another APP RoT memory test service", {TEST_PASSED}},
 #endif
 #ifdef TFM_PARTITION_FFM11
-    {&tfm_ipc_test_1012, "TFM_IPC_TEST_1012",
+    {&tfm_ns_ipc_test_1012, "TFM_NS_IPC_TEST_1012",
      "Accessing stateless service from non-secure client", {TEST_PASSED}},
 #endif
 };
@@ -84,7 +84,7 @@ void register_testsuite_ns_ipc_interface(struct test_suite_t *p_test_suite)
 
     list_size = (sizeof(ipc_veneers_tests) / sizeof(ipc_veneers_tests[0]));
 
-    set_testsuite("IPC non-secure interface test (TFM_IPC_TEST_1XXX)",
+    set_testsuite("IPC non-secure interface test (TFM_NS_IPC_TEST_1XXX)",
                   ipc_veneers_tests, list_size, p_test_suite);
 }
 
@@ -95,7 +95,7 @@ void register_testsuite_ns_ipc_interface(struct test_suite_t *p_test_suite)
  *       mean to test all possible combinations of
  *       input parameters and return values.
  */
-static void tfm_ipc_test_1001(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1001(struct test_result_t *ret)
 {
     uint32_t version;
 
@@ -111,7 +111,7 @@ static void tfm_ipc_test_1001(struct test_result_t *ret)
 /**
  * \brief Retrieve the version of an RoT Service.
  */
-static void tfm_ipc_test_1002(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1002(struct test_result_t *ret)
 {
     uint32_t version;
 
@@ -130,7 +130,7 @@ static void tfm_ipc_test_1002(struct test_result_t *ret)
 /**
  * \brief Connect to an RoT Service by its SID.
  */
-static void tfm_ipc_test_1003(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1003(struct test_result_t *ret)
 {
     psa_handle_t handle;
 
@@ -149,7 +149,7 @@ static void tfm_ipc_test_1003(struct test_result_t *ret)
 /**
  * \brief Call an RoT Service.
  */
-static void tfm_ipc_test_1004(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1004(struct test_result_t *ret)
 {
     char str1[] = "str1";
     char str2[] = "str2";
@@ -183,7 +183,7 @@ static void tfm_ipc_test_1004(struct test_result_t *ret)
 /**
  * \brief Call IPC_CLIENT_TEST_BASIC_SID RoT Service to run the IPC basic test.
  */
-static void tfm_ipc_test_1005(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1005(struct test_result_t *ret)
 {
     psa_handle_t handle;
     psa_status_t status;
@@ -220,7 +220,7 @@ static void tfm_ipc_test_1005(struct test_result_t *ret)
  * \brief Call IPC_CLIENT_TEST_PSA_ACCESS_APP_MEM_SID RoT Service
  *  to run the IPC PSA access APP mem test.
  */
-static void tfm_ipc_test_1006(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1006(struct test_result_t *ret)
 {
     psa_handle_t handle;
     psa_status_t status;
@@ -258,7 +258,7 @@ static void tfm_ipc_test_1006(struct test_result_t *ret)
  * \brief Call IPC_CLIENT_TEST_PSA_ACCESS_APP_READ_ONLY_MEM_SID RoT Service
  *  to run the IPC PSA access APP readonly mem test.
  */
-static void tfm_ipc_test_1007(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1007(struct test_result_t *ret)
 {
     psa_handle_t handle;
     psa_status_t status;
@@ -291,7 +291,7 @@ static void tfm_ipc_test_1007(struct test_result_t *ret)
  * \brief Call IPC_CLIENT_TEST_APP_ACCESS_PSA_MEM_SID RoT Service
  *  to run the IPC APP access PSA mem test.
  */
-static void tfm_ipc_test_1008(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1008(struct test_result_t *ret)
 {
     psa_handle_t handle;
     int test_result;
@@ -320,7 +320,7 @@ static void tfm_ipc_test_1008(struct test_result_t *ret)
  * \brief Call IPC_CLIENT_TEST_MEM_CHECK_SID RoT Service
  *  to run the IPC mem check test.
  */
-static void tfm_ipc_test_1009(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1009(struct test_result_t *ret)
 {
     psa_handle_t handle;
     int test_result;
@@ -348,7 +348,7 @@ static void tfm_ipc_test_1009(struct test_result_t *ret)
  * \brief Call IPC_SERVICE_TEST_CLIENT_PREGRAMMER_ERROR RoT Service to
  *  test psa_call with the status of PSA_ERROR_PROGRAMMER_ERROR.
  */
-static void tfm_ipc_test_1010(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1010(struct test_result_t *ret)
 {
     psa_handle_t handle;
     psa_status_t status;
@@ -384,7 +384,7 @@ static void tfm_ipc_test_1010(struct test_result_t *ret)
  * \brief Call IPC_CLIENT_TEST_RETRIEVE_APP_MEM_SID RoT Service
  * to run the ARoT access another ARoT mem test.
  */
-static void tfm_ipc_test_1011(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1011(struct test_result_t *ret)
 {
     psa_handle_t handle;
     psa_status_t status;
@@ -418,7 +418,7 @@ static void tfm_ipc_test_1011(struct test_result_t *ret)
  *
  * \note Accessing stateless service from non-secure client.
  */
-static void tfm_ipc_test_1012(struct test_result_t *ret)
+static void tfm_ns_ipc_test_1012(struct test_result_t *ret)
 {
     uint32_t data = 0xFFFFABCD;
     psa_handle_t handle;
