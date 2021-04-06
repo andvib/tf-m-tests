@@ -28,6 +28,7 @@ target_compile_definitions(tfm_test_suite_core_ns
         DOMAIN_NS=1
         $<$<BOOL:${TFM_IRQ_TEST}>:TFM_ENABLE_IRQ_TEST>
         $<$<BOOL:${TFM_INTERACTIVE_TEST}>:CORE_TEST_INTERACTIVE>
+        $<$<BOOL:${TFM_PERIPH_ACCESS_TEST}>:TFM_ENABLE_PERIPH_ACCESS_TEST>
 )
 
 target_link_libraries(tfm_test_suite_core_ns
