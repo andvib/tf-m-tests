@@ -45,10 +45,10 @@
 
 /* Define test suite for core interactive tests */
 /* List of tests */
-static void tfm_core_test_2001(struct test_result_t *ret);
+static void tfm_ns_core_test_2001(struct test_result_t *ret);
 
 static struct test_t core_tests[] = {
-    {&tfm_core_test_2001, "TFM_CORE_TEST_2001",
+    {&tfm_ns_core_test_2001, "TFM_NS_CORE_TEST_2001",
      "Interactive tests", {TEST_PASSED} },
 };
 
@@ -67,7 +67,7 @@ static void execute_ns_interactive_tests(void);
 /**
  * \brief Tests core function with interactive test cases
  */
-static void tfm_core_test_2001(struct test_result_t *ret)
+static void tfm_ns_core_test_2001(struct test_result_t *ret)
 {
     execute_ns_interactive_tests();
 
