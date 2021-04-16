@@ -50,10 +50,10 @@
 #define SECOND_ELEMENT_START_INDEX (1)
 
 /* List of tests */
-static void tfm_ns_audit_test_1001(struct test_result_t *ret);
+static void tfm_audit_test_1001(struct test_result_t *ret);
 
 static struct test_t audit_veneers_tests[] = {
-    {&tfm_ns_audit_test_1001, "TFM_NS_AUDIT_TEST_1001",
+    {&tfm_audit_test_1001, "TFM_NS_AUDIT_TEST_1001",
      "Non Secure functional", {TEST_PASSED} },
 };
 
@@ -81,7 +81,7 @@ void register_testsuite_ns_audit_interface(struct test_suite_t *p_test_suite)
  *       the status of the log will change and these
  *       tests may start failing.
  */
-static void tfm_ns_audit_test_1001(struct test_result_t *ret)
+static void tfm_audit_test_1001(struct test_result_t *ret)
 {
     psa_status_t status;
 
@@ -264,7 +264,7 @@ static void tfm_ns_audit_test_1001(struct test_result_t *ret)
  *       will always fail. Therefore skip this test case when Secure audit
  *       logging is disabled.
  */
-static void tfm_ns_audit_test_1001(struct test_result_t *ret)
+static void tfm_audit_test_1001(struct test_result_t *ret)
 {
     TEST_LOG("Skipped when Secure audit logging test is disabled.\r\n");
 

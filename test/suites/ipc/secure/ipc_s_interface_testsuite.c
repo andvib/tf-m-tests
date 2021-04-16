@@ -12,12 +12,12 @@
 
 /* List of tests */
 #ifdef TFM_PARTITION_FFM11
-static void tfm_s_ipc_test_1001(struct test_result_t *ret);
+static void tfm_ipc_test_1001(struct test_result_t *ret);
 #endif
 
 static struct test_t ipc_veneers_tests[] = {
 #ifdef TFM_PARTITION_FFM11
-    {&tfm_s_ipc_test_1001, "TFM_S_IPC_TEST_1001",
+    {&tfm_ipc_test_1001, "TFM_S_IPC_TEST_1001",
      "Accessing stateless service from secure partition", {TEST_PASSED}},
 #endif
 };
@@ -38,7 +38,7 @@ void register_testsuite_s_ipc_interface(struct test_suite_t *p_test_suite)
  *
  * \note Accessing stateless service from a secure partition.
  */
-static void tfm_s_ipc_test_1001(struct test_result_t *ret)
+static void tfm_ipc_test_1001(struct test_result_t *ret)
 {
     uint32_t data = 0xFFFFABCD;
     psa_handle_t handle;

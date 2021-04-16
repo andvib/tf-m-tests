@@ -14,25 +14,25 @@
 
 /* Define test suite for attestation service tests */
 /* List of tests */
-static void tfm_ns_attest_test_2001(struct test_result_t *ret);
+static void tfm_attest_test_2001(struct test_result_t *ret);
 #ifdef INCLUDE_TEST_CODE /* Remove them from release build */
-static void tfm_ns_attest_test_2002(struct test_result_t *ret);
-static void tfm_ns_attest_test_2003(struct test_result_t *ret);
-static void tfm_ns_attest_test_2004(struct test_result_t *ret);
-static void tfm_ns_attest_test_2005(struct test_result_t *ret);
+static void tfm_attest_test_2002(struct test_result_t *ret);
+static void tfm_attest_test_2003(struct test_result_t *ret);
+static void tfm_attest_test_2004(struct test_result_t *ret);
+static void tfm_attest_test_2005(struct test_result_t *ret);
 #endif
 
 static struct test_t attestation_interface_tests[] = {
-    {&tfm_ns_attest_test_2001, "TFM_NS_ATTEST_TEST_2001",
+    {&tfm_attest_test_2001, "TFM_NS_ATTEST_TEST_2001",
      "Symmetric key algorithm based Initial Attestation test", {0} },
 #ifdef INCLUDE_TEST_CODE /* Remove them from release build */
-    {&tfm_ns_attest_test_2002, "TFM_NS_ATTEST_TEST_2002",
+    {&tfm_attest_test_2002, "TFM_NS_ATTEST_TEST_2002",
      "Minimal token test of attest token", {0} },
-    {&tfm_ns_attest_test_2003, "TFM_NS_ATTEST_TEST_2003",
+    {&tfm_attest_test_2003, "TFM_NS_ATTEST_TEST_2003",
      "Minimal token size test of attest token", {0} },
-    {&tfm_ns_attest_test_2004, "TFM_NS_ATTEST_TEST_2004",
+    {&tfm_attest_test_2004, "TFM_NS_ATTEST_TEST_2004",
      "Short circuit tag test of attest token", {0} },
-    {&tfm_ns_attest_test_2005, "TFM_NS_ATTEST_TEST_2005",
+    {&tfm_attest_test_2005, "TFM_NS_ATTEST_TEST_2005",
      "Negative test cases for initial attestation service", {0} },
 #endif
 };
@@ -53,14 +53,14 @@ register_testsuite_ns_attestation_interface(struct test_suite_t *p_test_suite)
 /*!
  * \brief Get an IAT with symmetric key algorithm based Initial Attestation.
  */
-static void tfm_ns_attest_test_2001(struct test_result_t *ret)
+static void tfm_attest_test_2001(struct test_result_t *ret)
 {
     int32_t err;
 
     err = decode_test_symmetric_initial_attest();
     if (err != 0) {
-        TEST_LOG("tfm_ns_attest_test_2001() returned: %d\r\n", err);
-        TEST_FAIL("Attest token tfm_ns_attest_test_2001() has failed");
+        TEST_LOG("tfm_attest_test_2001() returned: %d\r\n", err);
+        TEST_FAIL("Attest token tfm_attest_test_2001() has failed");
         return;
     }
 
@@ -76,7 +76,7 @@ static void tfm_ns_attest_test_2001(struct test_result_t *ret)
  *  - only hard coded challenge is included
  *  - only mandatory claims are included
  */
-static void tfm_ns_attest_test_2002(struct test_result_t *ret)
+static void tfm_attest_test_2002(struct test_result_t *ret)
 {
     int32_t err;
 
@@ -94,7 +94,7 @@ static void tfm_ns_attest_test_2002(struct test_result_t *ret)
  * \brief Get the size of the minimal token, only include a hard coded
  *        challenge, but omit the rest of the claims
  */
-static void tfm_ns_attest_test_2003(struct test_result_t *ret)
+static void tfm_attest_test_2003(struct test_result_t *ret)
 {
     int32_t err;
 
@@ -114,7 +114,7 @@ static void tfm_ns_attest_test_2003(struct test_result_t *ret)
  *
  * More info in token_test.h
  */
-static void tfm_ns_attest_test_2004(struct test_result_t *ret)
+static void tfm_attest_test_2004(struct test_result_t *ret)
 {
     int32_t err;
 
@@ -136,7 +136,7 @@ static void tfm_ns_attest_test_2004(struct test_result_t *ret)
  *    - Calling initial attestation service with smaller buffer size than the
  *      expected size of the token.
  */
-static void tfm_ns_attest_test_2005(struct test_result_t *ret)
+static void tfm_attest_test_2005(struct test_result_t *ret)
 {
     psa_status_t err;
     size_t token_size;

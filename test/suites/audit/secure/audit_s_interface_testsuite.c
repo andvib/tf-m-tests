@@ -29,10 +29,10 @@
 #define FIRST_RETRIEVAL_LOG_INDEX (0)
 
 /* List of tests */
-static void tfm_s_audit_test_1001(struct test_result_t *ret);
+static void tfm_audit_test_1001(struct test_result_t *ret);
 
 static struct test_t audit_veneers_tests[] = {
-    {&tfm_s_audit_test_1001, "TFM_S_AUDIT_TEST_1001",
+    {&tfm_audit_test_1001, "TFM_S_AUDIT_TEST_1001",
      "Secure functional", {TEST_PASSED} },
 };
 
@@ -60,7 +60,7 @@ void register_testsuite_s_audit_interface(struct test_suite_t *p_test_suite)
  *       different state, Non Secure functional tests
  *       need to be amended accordingly.
  */
-static void tfm_s_audit_test_1001(struct test_result_t *ret)
+static void tfm_audit_test_1001(struct test_result_t *ret)
 {
     psa_status_t status;
     uint8_t local_buffer[LOCAL_BUFFER_SIZE], idx;

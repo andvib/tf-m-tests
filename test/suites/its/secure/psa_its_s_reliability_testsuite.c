@@ -30,13 +30,13 @@
 
 /* Define test suite for ITS reliability tests */
 /* List of tests */
-static void tfm_s_its_test_2001(struct test_result_t *ret);
-static void tfm_s_its_test_2002(struct test_result_t *ret);
+static void tfm_its_test_2001(struct test_result_t *ret);
+static void tfm_its_test_2002(struct test_result_t *ret);
 
 static struct test_t reliability_tests[] = {
-    {&tfm_s_its_test_2001, "TFM_S_ITS_TEST_2001",
+    {&tfm_its_test_2001, "TFM_S_ITS_TEST_2001",
      "repetitive sets and gets in/from an asset", {TEST_PASSED} },
-    {&tfm_s_its_test_2002, "TFM_S_ITS_TEST_2002",
+    {&tfm_its_test_2002, "TFM_S_ITS_TEST_2002",
      "repetitive sets, gets and removes", {TEST_PASSED} },
 };
 
@@ -54,7 +54,7 @@ void register_testsuite_s_psa_its_reliability(struct test_suite_t *p_test_suite)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_2001(struct test_result_t *ret)
+static void tfm_its_test_2001(struct test_result_t *ret)
 {
     psa_status_t status;
     const psa_storage_uid_t uid = TEST_UID;
@@ -112,7 +112,7 @@ static void tfm_s_its_test_2001(struct test_result_t *ret)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_2002(struct test_result_t *ret)
+static void tfm_its_test_2002(struct test_result_t *ret)
 {
     psa_status_t status;
     const psa_storage_uid_t uid = TEST_UID;

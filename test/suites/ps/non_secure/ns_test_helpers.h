@@ -49,7 +49,7 @@ extern "C" {
  *
  * \param[in] test_num  Identification number of the test
  */
-#define TFM_PS_TEST_NAME(test_num) CONCAT(tfm_ns_ps_test_, test_num)
+#define TFM_PS_TEST_NAME(test_num) CONCAT(tfm_ps_test_, test_num)
 
 /**
  * \brief Expands to the standard name of a task function.

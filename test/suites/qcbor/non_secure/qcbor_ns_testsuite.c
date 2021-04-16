@@ -24,10 +24,10 @@
  */
 
 /* Define test suite for QCBOR library */
-static void tfm_ns_qcbor_test_1001(struct test_result_t *ret);
+static void tfm_qcbor_test_1001(struct test_result_t *ret);
 
 static struct test_t qcbor_regression_test[] = {
-    {&tfm_ns_qcbor_test_1001, "TFM_NS_QCBOR_TEST_1001",
+    {&tfm_qcbor_test_1001, "TFM_NS_QCBOR_TEST_1001",
      "Regression test of QCBOR library", {TEST_PASSED} },
 };
 
@@ -115,7 +115,7 @@ static void fputs_wrapper(const char *string, void *out_ctx, int new_line)
 #endif
 }
 
-static void tfm_ns_qcbor_test_1001(struct test_result_t *ret)
+static void tfm_qcbor_test_1001(struct test_result_t *ret)
 {
     int32_t test_failed_cnt = 0;
 

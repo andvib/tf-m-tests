@@ -47,86 +47,86 @@ static uint8_t read_asset_data[PS_MAX_ASSET_SIZE] = {0};
 static size_t read_asset_data_len = 0;
 
 /* List of tests */
-static void tfm_ns_ps_test_1001(struct test_result_t *ret);
-static void tfm_ns_ps_test_1002(struct test_result_t *ret);
-static void tfm_ns_ps_test_1003(struct test_result_t *ret);
-static void tfm_ns_ps_test_1004(struct test_result_t *ret);
-static void tfm_ns_ps_test_1005(struct test_result_t *ret);
-static void tfm_ns_ps_test_1006(struct test_result_t *ret);
-static void tfm_ns_ps_test_1007(struct test_result_t *ret);
-static void tfm_ns_ps_test_1008(struct test_result_t *ret);
-static void tfm_ns_ps_test_1009(struct test_result_t *ret);
-static void tfm_ns_ps_test_1010(struct test_result_t *ret);
-static void tfm_ns_ps_test_1011(struct test_result_t *ret);
-static void tfm_ns_ps_test_1012(struct test_result_t *ret);
-static void tfm_ns_ps_test_1013(struct test_result_t *ret);
-static void tfm_ns_ps_test_1014(struct test_result_t *ret);
-static void tfm_ns_ps_test_1015(struct test_result_t *ret);
+static void tfm_ps_test_1001(struct test_result_t *ret);
+static void tfm_ps_test_1002(struct test_result_t *ret);
+static void tfm_ps_test_1003(struct test_result_t *ret);
+static void tfm_ps_test_1004(struct test_result_t *ret);
+static void tfm_ps_test_1005(struct test_result_t *ret);
+static void tfm_ps_test_1006(struct test_result_t *ret);
+static void tfm_ps_test_1007(struct test_result_t *ret);
+static void tfm_ps_test_1008(struct test_result_t *ret);
+static void tfm_ps_test_1009(struct test_result_t *ret);
+static void tfm_ps_test_1010(struct test_result_t *ret);
+static void tfm_ps_test_1011(struct test_result_t *ret);
+static void tfm_ps_test_1012(struct test_result_t *ret);
+static void tfm_ps_test_1013(struct test_result_t *ret);
+static void tfm_ps_test_1014(struct test_result_t *ret);
+static void tfm_ps_test_1015(struct test_result_t *ret);
 #ifdef TFM_NS_CLIENT_IDENTIFICATION
-static void tfm_ns_ps_test_1016(struct test_result_t *ret);
-static void tfm_ns_ps_test_1017(struct test_result_t *ret);
-static void tfm_ns_ps_test_1018(struct test_result_t *ret);
-static void tfm_ns_ps_test_1019(struct test_result_t *ret);
-static void tfm_ns_ps_test_1020(struct test_result_t *ret);
+static void tfm_ps_test_1016(struct test_result_t *ret);
+static void tfm_ps_test_1017(struct test_result_t *ret);
+static void tfm_ps_test_1018(struct test_result_t *ret);
+static void tfm_ps_test_1019(struct test_result_t *ret);
+static void tfm_ps_test_1020(struct test_result_t *ret);
 #endif /* TFM_NS_CLIENT_IDENTIFICATION */
-static void tfm_ns_ps_test_1021(struct test_result_t *ret);
-static void tfm_ns_ps_test_1022(struct test_result_t *ret);
-static void tfm_ns_ps_test_1023(struct test_result_t *ret);
-static void tfm_ns_ps_test_1024(struct test_result_t *ret);
-static void tfm_ns_ps_test_1025(struct test_result_t *ret);
+static void tfm_ps_test_1021(struct test_result_t *ret);
+static void tfm_ps_test_1022(struct test_result_t *ret);
+static void tfm_ps_test_1023(struct test_result_t *ret);
+static void tfm_ps_test_1024(struct test_result_t *ret);
+static void tfm_ps_test_1025(struct test_result_t *ret);
 
 static struct test_t psa_ps_ns_tests[] = {
-    {&tfm_ns_ps_test_1001, "TFM_NS_PS_TEST_1001",
+    {&tfm_ps_test_1001, "TFM_NS_PS_TEST_1001",
      "Set interface"},
-    {&tfm_ns_ps_test_1002, "TFM_NS_PS_TEST_1002",
+    {&tfm_ps_test_1002, "TFM_NS_PS_TEST_1002",
      "Set interface with create flags"},
-    {&tfm_ns_ps_test_1003, "TFM_NS_PS_TEST_1003",
+    {&tfm_ps_test_1003, "TFM_NS_PS_TEST_1003",
      "Set interface with NULL data pointer"},
-    {&tfm_ns_ps_test_1004, "TFM_NS_PS_TEST_1004",
+    {&tfm_ps_test_1004, "TFM_NS_PS_TEST_1004",
      "Set interface with write once UID"},
-    {&tfm_ns_ps_test_1005, "TFM_NS_PS_TEST_1005",
+    {&tfm_ps_test_1005, "TFM_NS_PS_TEST_1005",
      "Get interface with valid data"},
-    {&tfm_ns_ps_test_1006, "TFM_NS_PS_TEST_1006",
+    {&tfm_ps_test_1006, "TFM_NS_PS_TEST_1006",
      "Get interface with zero data length"},
-    {&tfm_ns_ps_test_1007, "TFM_NS_PS_TEST_1007",
+    {&tfm_ps_test_1007, "TFM_NS_PS_TEST_1007",
      "Get interface with invalid UIDs"},
-    {&tfm_ns_ps_test_1008, "TFM_NS_PS_TEST_1008",
+    {&tfm_ps_test_1008, "TFM_NS_PS_TEST_1008",
      "Get interface with invalid data lengths and offsets"},
-    {&tfm_ns_ps_test_1009, "TFM_NS_PS_TEST_1009",
+    {&tfm_ps_test_1009, "TFM_NS_PS_TEST_1009",
      "Get interface with NULL data pointer"},
-    {&tfm_ns_ps_test_1010, "TFM_NS_PS_TEST_1010",
+    {&tfm_ps_test_1010, "TFM_NS_PS_TEST_1010",
      "Get info interface with write once UID"},
-    {&tfm_ns_ps_test_1011, "TFM_NS_PS_TEST_1011",
+    {&tfm_ps_test_1011, "TFM_NS_PS_TEST_1011",
      "Get info interface with valid UID"},
-    {&tfm_ns_ps_test_1012, "TFM_NS_PS_TEST_1012",
+    {&tfm_ps_test_1012, "TFM_NS_PS_TEST_1012",
      "Get info interface with invalid UIDs"},
-    {&tfm_ns_ps_test_1013, "TFM_NS_PS_TEST_1013",
+    {&tfm_ps_test_1013, "TFM_NS_PS_TEST_1013",
      "Remove interface with valid UID"},
-    {&tfm_ns_ps_test_1014, "TFM_NS_PS_TEST_1014",
+    {&tfm_ps_test_1014, "TFM_NS_PS_TEST_1014",
      "Remove interface with write once UID"},
-    {&tfm_ns_ps_test_1015, "TFM_NS_PS_TEST_1015",
+    {&tfm_ps_test_1015, "TFM_NS_PS_TEST_1015",
      "Remove interface with invalid UID"},
 #ifdef TFM_NS_CLIENT_IDENTIFICATION
-    {&tfm_ns_ps_test_1016, "TFM_NS_PS_TEST_1016",
+    {&tfm_ps_test_1016, "TFM_NS_PS_TEST_1016",
      "Get interface with invalid thread name"},
-    {&tfm_ns_ps_test_1017, "TFM_NS_PS_TEST_1017",
+    {&tfm_ps_test_1017, "TFM_NS_PS_TEST_1017",
      "Get info interface with invalid thread name"},
-    {&tfm_ns_ps_test_1018, "TFM_NS_PS_TEST_1018",
+    {&tfm_ps_test_1018, "TFM_NS_PS_TEST_1018",
      "Remove interface with invalid thread name"},
-    {&tfm_ns_ps_test_1019, "TFM_NS_PS_TEST_1019",
+    {&tfm_ps_test_1019, "TFM_NS_PS_TEST_1019",
      "Attempt to access UID belonging to another thread"},
-    {&tfm_ns_ps_test_1020, "TFM_NS_PS_TEST_1020",
+    {&tfm_ps_test_1020, "TFM_NS_PS_TEST_1020",
      "Set UID alternately from two threads"},
 #endif /* TFM_NS_CLIENT_IDENTIFICATION */
-    {&tfm_ns_ps_test_1021, "TFM_NS_PS_TEST_1021",
+    {&tfm_ps_test_1021, "TFM_NS_PS_TEST_1021",
      "Block compaction after remove"},
-    {&tfm_ns_ps_test_1022, "TFM_NS_PS_TEST_1022",
+    {&tfm_ps_test_1022, "TFM_NS_PS_TEST_1022",
      "Multiple partial gets"},
-    {&tfm_ns_ps_test_1023, "TFM_NS_PS_TEST_1023",
+    {&tfm_ps_test_1023, "TFM_NS_PS_TEST_1023",
      "Multiple sets to same UID from same thread"},
-    {&tfm_ns_ps_test_1024, "TFM_NS_PS_TEST_1024",
+    {&tfm_ps_test_1024, "TFM_NS_PS_TEST_1024",
      "Get support interface"},
-    {&tfm_ns_ps_test_1025, "TFM_NS_PS_TEST_1025",
+    {&tfm_ps_test_1025, "TFM_NS_PS_TEST_1025",
      "Set, get and remove interface with different asset sizes"},
 };
 
@@ -923,7 +923,7 @@ static void tfm_ps_test_1016_task_3(struct test_result_t *ret)
 /**
  * \brief Tests get function with an invalid thread name.
  */
-static void tfm_ns_ps_test_1016(struct test_result_t *ret)
+static void tfm_ps_test_1016(struct test_result_t *ret)
 {
     tfm_ps_run_test("Thread_A", ret, tfm_ps_test_1016_task_1);
     if (ret->val != TEST_PASSED) {
@@ -1002,7 +1002,7 @@ static void tfm_ps_test_1017_task_3(struct test_result_t *ret)
 /**
  * \brief Tests get info function with an invalid thread name.
  */
-static void tfm_ns_ps_test_1017(struct test_result_t *ret)
+static void tfm_ps_test_1017(struct test_result_t *ret)
 {
     tfm_ps_run_test("Thread_A", ret, tfm_ps_test_1017_task_1);
     if (ret->val != TEST_PASSED) {
@@ -1074,7 +1074,7 @@ static void tfm_ps_test_1018_task_3(struct test_result_t *ret)
 /**
  * \brief Tests remove function with an invalid thread name.
  */
-static void tfm_ns_ps_test_1018(struct test_result_t *ret)
+static void tfm_ps_test_1018(struct test_result_t *ret)
 {
     tfm_ps_run_test("Thread_A", ret, tfm_ps_test_1018_task_1);
     if (ret->val != TEST_PASSED) {
@@ -1239,7 +1239,7 @@ static void tfm_ps_test_1019_task_3(struct test_result_t *ret)
 /**
  * \brief Tests attempting to access UID belonging to another thread.
  */
-static void tfm_ns_ps_test_1019(struct test_result_t *ret)
+static void tfm_ps_test_1019(struct test_result_t *ret)
 {
     tfm_ps_run_test("Thread_A", ret, tfm_ps_test_1019_task_1);
     if (ret->val != TEST_PASSED) {
@@ -1415,7 +1415,7 @@ static void tfm_ps_test_1020_task_7(struct test_result_t *ret)
  * \brief Tests writing data to a UID alternately from two threads before
  *        read-back.
  */
-static void tfm_ns_ps_test_1020(struct test_result_t *ret)
+static void tfm_ps_test_1020(struct test_result_t *ret)
 {
     tfm_ps_run_test("Thread_A", ret, tfm_ps_test_1020_task_1);
     if (ret->val != TEST_PASSED) {

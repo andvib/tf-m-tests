@@ -16,10 +16,10 @@
 #define TEST_UID_ACCESS_CONTROL 42U
 
 /* List of tests */
-static void tfm_s_its_test_1020(struct test_result_t *ret);
-static void tfm_s_its_test_1021(struct test_result_t *ret);
-static void tfm_s_its_test_1022(struct test_result_t *ret);
-static void tfm_s_its_test_1023(struct test_result_t *ret);
+static void tfm_its_test_1020(struct test_result_t *ret);
+static void tfm_its_test_1021(struct test_result_t *ret);
+static void tfm_its_test_1022(struct test_result_t *ret);
+static void tfm_its_test_1023(struct test_result_t *ret);
 
 static struct test_t psa_its_s_tests[] = {
     {&tfm_its_test_common_001, "TFM_S_ITS_TEST_1001",
@@ -60,13 +60,13 @@ static struct test_t psa_its_s_tests[] = {
      "Multiple sets to same UID from same thread"},
     {&tfm_its_test_common_019, "TFM_S_ITS_TEST_1019",
      "Set, get and remove interface with different asset sizes"},
-    {&tfm_s_its_test_1020, "TFM_S_ITS_TEST_1020",
+    {&tfm_its_test_1020, "TFM_S_ITS_TEST_1020",
      "Set interface with invalid data length"},
-    {&tfm_s_its_test_1021, "TFM_S_ITS_TEST_1021",
+    {&tfm_its_test_1021, "TFM_S_ITS_TEST_1021",
      "Get interface with invalid data lengths and offsets"},
-    {&tfm_s_its_test_1022, "TFM_S_ITS_TEST_1022",
+    {&tfm_its_test_1022, "TFM_S_ITS_TEST_1022",
      "Get info interface with NULL info pointer"},
-    {&tfm_s_its_test_1023, "TFM_S_ITS_TEST_1023",
+    {&tfm_its_test_1023, "TFM_S_ITS_TEST_1023",
      "Attempt to get a UID set by a different partition"},
 };
 
@@ -87,7 +87,7 @@ void register_testsuite_s_psa_its_interface(struct test_suite_t *p_test_suite)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_1020(struct test_result_t *ret)
+static void tfm_its_test_1020(struct test_result_t *ret)
 {
 #ifndef TFM_PSA_API
     psa_status_t status;
@@ -121,7 +121,7 @@ static void tfm_s_its_test_1020(struct test_result_t *ret)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_1021(struct test_result_t *ret)
+static void tfm_its_test_1021(struct test_result_t *ret)
 {
 #ifndef TFM_PSA_API
     psa_status_t status;
@@ -197,7 +197,7 @@ static void tfm_s_its_test_1021(struct test_result_t *ret)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_1022(struct test_result_t *ret)
+static void tfm_its_test_1022(struct test_result_t *ret)
 {
     psa_status_t status;
     const psa_storage_uid_t uid = TEST_UID_3;
@@ -241,7 +241,7 @@ static void tfm_s_its_test_1022(struct test_result_t *ret)
  *
  * \param[out] ret  Test result
  */
-static void tfm_s_its_test_1023(struct test_result_t *ret)
+static void tfm_its_test_1023(struct test_result_t *ret)
 {
     psa_status_t status;
     const psa_storage_uid_t uid = TEST_UID_ACCESS_CONTROL;
